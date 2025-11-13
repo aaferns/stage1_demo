@@ -26,11 +26,11 @@ public class Event {
     @Column(name = "end_time", nullable = false)
     private java.time.LocalDateTime endTime;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "location_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "location_id", nullable = true)
     private Location location;
 }
