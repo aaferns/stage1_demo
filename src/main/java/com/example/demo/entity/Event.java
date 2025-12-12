@@ -4,7 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "events")
+@Table(name = "events",
+        indexes = {
+                @Index(name = "idx_event_start_time", columnList = "start_time"),
+                @Index(name = "idx_event_category", columnList = "category_id"),
+                @Index(name = "idx_event_location", columnList = "location_id")
+        })
 @Data                   // Lombok: generates getters, setters, toString, equals, hashCode
 @NoArgsConstructor      // Lombok: generates a no-args constructor
 @AllArgsConstructor     // Lombok: generates a constructor with all fields
