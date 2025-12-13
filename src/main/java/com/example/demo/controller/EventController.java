@@ -24,7 +24,6 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    // CREATE
     @PostMapping
     public EventDTO createEvent(@RequestBody EventRequest req) {
         Event saved = eventService.createEvent(req);
@@ -39,7 +38,6 @@ public class EventController {
         );
     }
 
-    // READ (all)
     @GetMapping
     public List<EventDTO> getAllEvents() {
         return eventRepository.findAll().stream()
@@ -55,13 +53,11 @@ public class EventController {
                 .toList();
     }
 
-    // READ (by id)
     @GetMapping("/{id}")
     public Optional<Event> getEventById(@PathVariable Integer id) {
         return eventRepository.findById(id);
     }
 
-    // UPDATE
     @PutMapping("/{id}")
     public EventDTO updateEvent(@PathVariable Integer id, @RequestBody EventRequest req) {
         Event saved = eventService.updateEvent(id, req);
@@ -76,14 +72,12 @@ public class EventController {
         );
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEvent(@PathVariable Integer id) {
         eventService.deleteEvent(id);
         return ResponseEntity.noContent().build();
     }
 
-    // FILTER (uses indexed query in EventRepository)
     @GetMapping("/filter")
     public List<EventDTO> filterEvents(
             @RequestParam(required = false) String start,

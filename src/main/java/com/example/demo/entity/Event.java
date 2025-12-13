@@ -10,14 +10,14 @@ import lombok.*;
                 @Index(name = "idx_event_category", columnList = "category_id"),
                 @Index(name = "idx_event_location", columnList = "location_id")
         })
-@Data                   // Lombok: generates getters, setters, toString, equals, hashCode
-@NoArgsConstructor      // Lombok: generates a no-args constructor
-@AllArgsConstructor     // Lombok: generates a constructor with all fields
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer eventId;   // PK
+    private Integer eventId;
 
     @Column(nullable = false, length = 100)
     private String title;
